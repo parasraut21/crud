@@ -46,8 +46,16 @@ const Navbar = ({ user, onLogout }) => {
                 </div>
             </div>
 
+            {/* Overlay */}
+            {isOpen && (
+                <div
+                    onClick={() => setIsOpen(false)}
+                    className="md:hidden fixed inset-0 bg-black/50 top-16 z-40"
+                />
+            )}
+
             {/* Mobile Sidebar */}
-            <div className={`md:hidden fixed top-16 right-0 h-full w-64 bg-gradient-to-b from-purple-700 to-blue-700 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`md:hidden fixed top-16 right-0 h-full w-64 bg-gradient-to-b from-purple-700 to-blue-700 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="flex flex-col p-6 space-y-4">
                     <div className="pb-4 border-b border-white/20">
                         <p className="text-sm text-gray-200">Logged in as</p>
@@ -67,14 +75,6 @@ const Navbar = ({ user, onLogout }) => {
                     </button>
                 </div>
             </div>
-
-            {/* Overlay */}
-            {isOpen && (
-                <div
-                    onClick={() => setIsOpen(false)}
-                    className="md:hidden fixed inset-0 bg-black/50 top-16"
-                />
-            )}
         </nav>
     )
 }
